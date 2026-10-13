@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StudySpace — Học tập thông minh</title>
+  <style>
+    :root{--bg:#f5f7fb;--card:#fff;--ink:#172033;--muted:#758099;--line:#e7ebf3;--purple:#6957e8;--purple2:#8d7cf7;--green:#20b486}
+    *{box-sizing:border-box}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--ink)}
+    button,input{font:inherit}button{cursor:pointer}.app{display:grid;grid-template-columns:245px 1fr;min-height:100vh}
+    aside{background:#fff;border-right:1px solid var(--line);padding:27px 18px;display:flex;flex-direction:column;gap:30px}
+    .brand{display:flex;align-items:center;gap:10px;font-size:20px;font-weight:850;letter-spacing:-.6px;padding:0 10px}
+    .logo{width:36px;height:36px;border-radius:12px;background:linear-gradient(135deg,var(--purple),#9c8cff);display:grid;place-items:center;color:#fff;font-weight:900;box-shadow:0 7px 18px #6957e833}
+    .nav-label{font-size:10px;font-weight:800;letter-spacing:1.5px;color:#a0a8bb;padding:0 12px;margin-bottom:9px}
+    nav{display:grid;gap:5px}.nav-item{display:flex;align-items:center;gap:12px;padding:12px;border-radius:12px;text-decoration:none;color:#737e95;font-weight:650;font-size:14px;border:0;background:transparent;text-align:left}
+    .nav-item.active,.nav-item:hover{background:#f0edff;color:var(--purple)}.nav-icon{width:20px;text-align:center;font-size:17px}
+    .side-bottom{margin-top:auto;background:#f5f3ff;border-radius:18px;padding:17px}.side-bottom strong{font-size:14px}.side-bottom p{font-size:12px;color:var(--muted);line-height:1.55}.small-btn{background:var(--purple);color:#fff;border:0;border-radius:10px;padding:10px 12px;width:100%;font-size:12px;font-weight:750}
+    main{padding:28px clamp(18px,4vw,48px);max-width:1600px;width:100%;margin:0 auto}.topbar{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:30px}.eyebrow{color:var(--muted);font-size:13px;margin-bottom:5px}.heading{font-size:27px;letter-spacing:-1px;margin:0;font-weight:850}.profile{display:flex;align-items:center;gap:12px}.search{position:relative}.search input{width:min(245px,28vw);border:1px solid var(--line);background:#fff;padding:12px 14px 12px 39px;border-radius:12px;outline:none}.search span{position:absolute;left:13px;top:10px;color:#8b95aa}.avatar{height:42px;width:42px;border-radius:14px;background:#ffe3d5;display:grid;place-items:center;font-size:21px}.welcome{display:flex;align-items:center;justify-content:space-between;gap:20px;background:linear-gradient(110deg,#6b59e8,#8978f5);color:#fff;padding:27px 30px;border-radius:22px;overflow:hidden;position:relative;box-shadow:0 14px 35px #6957e82b}.welcome:after{content:"✦";position:absolute;font-size:180px;right:30px;top:-50px;color:#ffffff15}.welcome h2{font-size:25px;margin:0 0 8px;letter-spacing:-.6px}.welcome p{color:#e7e3ff;font-size:13px;margin:0 0 20px}.white-btn{border:0;border-radius:10px;padding:11px 16px;background:#fff;color:var(--purple);font-weight:800;font-size:12px}.welcome-art{font-size:76px;z-index:1;margin-right:30px;filter:drop-shadow(0 10px 8px #3d2b9c44)}
+    .section-head{display:flex;align-items:center;justify-content:space-between;margin:29px 0 15px}.section-head h3{margin:0;font-size:17px;letter-spacing:-.3px}.muted-link{color:var(--purple);font-size:12px;font-weight:800;text-decoration:none;background:none;border:0}
+    .stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.stat,.course,.activity{background:var(--card);border:1px solid var(--line);border-radius:17px;padding:19px}.stat-top{display:flex;align-items:center;justify-content:space-between;color:var(--muted);font-size:12px;font-weight:650}.stat-icon{width:35px;height:35px;display:grid;place-items:center;border-radius:11px;background:#f0edff;font-size:17px}.stat-number{font-size:27px;font-weight:850;letter-spacing:-1px;margin:13px 0 4px}.stat-note{font-size:11px;color:var(--green);font-weight:750}.course-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.course{padding:0;overflow:hidden;transition:transform .2s,box-shadow .2s}.course:hover{transform:translateY(-3px);box-shadow:0 12px 24px #28304b0b}.course-cover{height:132px;display:grid;place-items:center;font-size:48px;position:relative}.cover-purple{background:linear-gradient(135deg,#e9e4ff,#c9c0ff)}.cover-peach{background:linear-gradient(135deg,#ffeadc,#ffd0ba)}.cover-blue{background:linear-gradient(135deg,#d9f2ff,#b5dfff)}.pill{position:absolute;left:13px;top:13px;background:#ffffffd9;border-radius:7px;padding:5px 8px;font-size:10px;font-weight:800;color:#5d6680}.course-body{padding:16px}.course-meta{font-size:11px;color:var(--muted);display:flex;justify-content:space-between;margin-bottom:9px}.course h4{font-size:15px;margin:0 0 13px;letter-spacing:-.3px}.progress-line{height:6px;background:#eef0f6;border-radius:10px;overflow:hidden}.progress-line span{height:100%;display:block;background:var(--purple);border-radius:10px}.progress-label{display:flex;justify-content:space-between;color:var(--muted);font-size:10px;margin-top:8px}.bottom-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:16px;margin-top:25px}.activity h3{font-size:16px;margin:0 0 17px}.activity-row{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}.activity-row:last-child{border:0;padding-bottom:0}.activity-ico{width:38px;height:38px;display:grid;place-items:center;border-radius:12px;background:#f3f1ff}.activity-row strong{font-size:12px;display:block;margin-bottom:4px}.activity-row small{color:var(--muted);font-size:11px}.activity-row time{margin-left:auto;color:var(--muted);font-size:10px;white-space:nowrap}.week{display:flex;align-items:end;justify-content:space-between;gap:10px;height:130px;margin-top:15px}.day{display:flex;flex-direction:column;align-items:center;gap:8px;flex:1;height:100%;justify-content:end;color:var(--muted);font-size:10px}.bar{width:min(27px,100%);background:#e6e2ff;border-radius:7px 7px 3px 3px;min-height:12px}.bar.today{background:var(--purple)}.toast{position:fixed;right:22px;bottom:22px;background:#20263a;color:white;padding:13px 18px;border-radius:12px;box-shadow:0 12px 35px #0002;font-size:13px;opacity:0;transform:translateY(10px);transition:.25s;pointer-events:none}.toast.show{opacity:1;transform:translateY(0)}
+    @media(max-width:1050px){.app{grid-template-columns:205px 1fr}.course-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.course-grid .course:last-child{display:none}.welcome-art{margin-right:0}}
+    @media(max-width:760px){.app{grid-template-columns:1fr}aside{padding:14px 16px;gap:14px;border-right:0;border-bottom:1px solid var(--line)}.brand{padding:0}.nav-label,.side-bottom{display:none}nav{display:flex;overflow:auto;gap:5px}.nav-item{white-space:nowrap;padding:9px 11px;font-size:12px}.nav-icon{display:none}main{padding:22px 16px}.topbar{align-items:flex-start}.heading{font-size:22px}.search input{width:42px;padding-left:35px}.search input:focus{width:160px}.welcome{padding:23px 20px}.welcome h2{font-size:21px}.welcome-art{font-size:52px}.stats{gap:9px}.stat{padding:13px}.stat-number{font-size:22px}.stat-top{font-size:10px}.stat-icon{width:29px;height:29px}.course-grid{gap:10px}.course-cover{height:105px}.course-body{padding:12px}.course h4{font-size:13px}.bottom-grid{grid-template-columns:1fr}.profile{gap:8px}}
+    @media(max-width:430px){.welcome-art{display:none}.stats{grid-template-columns:1fr}.stat{display:flex;align-items:center;gap:13px}.stat-number{margin:0}.stat-top{flex:1}.stat-note{display:none}.course-grid{grid-template-columns:1fr}.course-grid .course:last-child{display:block}.course-cover{height:115px}.heading{font-size:20px}}
+  </style>
+</head>
+<body>
+<div class="app">
+  <aside>
+    <div class="brand"><div class="logo">S</div> StudySpace</div>
+    <div>
+      <div class="nav-label">MENU CHÍNH</div>
+      <nav>
+        <button class="nav-item active" data-view="Tổng quan"><span class="nav-icon">▦</span>Tổng quan</button>
+        <button class="nav-item" data-view="Khóa học"><span class="nav-icon">▤</span>Khóa học</button>
+        <button class="nav-item" data-view="Lịch học"><span class="nav-icon">▦</span>Lịch học</button>
+        <button class="nav-item" data-view="Thành tích"><span class="nav-icon">♧</span>Thành tích</button>
+      </nav>
+    </div>
+    <div>
+      <div class="nav-label">CÁ NHÂN</div>
+      <nav>
+        <button class="nav-item" data-view="Cài đặt"><span class="nav-icon">⚙</span>Cài đặt</button>
+        <button class="nav-item" data-view="Trợ giúp"><span class="nav-icon">?</span>Trợ giúp</button>
+      </nav>
+    </div>
+    <div class="side-bottom">
+      <strong>🚀 Tiến bộ mỗi ngày</strong>
+      <p>Chỉ cần 20 phút học tập hôm nay để tiến gần hơn tới mục tiêu của bạn.</p>
+      <button class="small-btn" id="goalBtn">Xem mục tiêu</button>
+    </div>
+  </aside>
+  <main>
+    <header class="topbar">
+      <div><div class="eyebrow">Thứ Hai, ngày mới đầy năng lượng ✨</div><h1 class="heading" id="pageTitle">Chào buổi sáng! 👋</h1></div>
+      <div class="profile"><label class="search"><span>⌕</span><input id="search" placeholder="Tìm khóa học..." aria-label="Tìm khóa học"></label><div class="avatar">🧑🏻‍🎓</div></div>
+    </header>
+    <section class="welcome">
+      <div><h2>Học một chút mỗi ngày.</h2><p>Kiến thức hôm nay, thành công ngày mai.</p><button class="white-btn" id="continueBtn">Tiếp tục học&nbsp; →</button></div>
+      <div class="welcome-art">📚</div>
+    </section>
+    <div class="section-head"><h3>Tổng quan học tập</h3><button class="muted-link" id="reportBtn">Xem báo cáo ↗</button></div>
+    <section class="stats">
+      <div class="stat"><div class="stat-top"><span>Thời gian học</span><span class="stat-icon">◷</span></div><div><div class="stat-number">12.5h</div><div class="stat-note">↗ +12% tuần trước</div></div></div>
+      <div class="stat"><div class="stat-top"><span>Khóa học đang học</span><span class="stat-icon">▤</span></div><div><div class="stat-number">04</div><div class="stat-note">Tiếp tục phát huy!</div></div></div>
+      <div class="stat"><div class="stat-top"><span>Chuỗi ngày học</span><span class="stat-icon">🔥</span></div><div><div class="stat-number">7 ngày</div><div class="stat-note">Bạn đang làm rất tốt!</div></div></div>
+    </section>
+    <div class="section-head"><h3>Khóa học của bạn</h3><button class="muted-link" id="allCourses">Xem tất cả →</button></div>
+    <section class="course-grid" id="courseGrid">
+      <article class="course" data-name="Tiếng Anh giao tiếp"><div class="course-cover cover-purple"><span class="pill">ĐANG HỌC</span>💬</div><div class="course-body"><div class="course-meta"><span>NGOẠI NGỮ</span><span>12 bài học</span></div><h4>Tiếng Anh giao tiếp</h4><div class="progress-line"><span style="width:72%"></span></div><div class="progress-label"><span>Đã hoàn thành</span><strong>72%</strong></div></div></article>
+      <article class="course" data-name="Thiết kế giao diện UI UX"><div class="course-cover cover-peach"><span class="pill">ĐANG HỌC</span>🎨</div><div class="course-body"><div class="course-meta"><span>THIẾT KẾ</span><span>18 bài học</span></div><h4>Thiết kế giao diện UI/UX</h4><div class="progress-line"><span style="width:45%;background:#f29a67"></span></div><div class="progress-label"><span>Đã hoàn thành</span><strong>45%</strong></div></div></article>
+      <article class="course" data-name="Lập trình web cơ bản"><div class="course-cover cover-blue"><span class="pill">MỚI CẬP NHẬT</span>💻</div><div class="course-body"><div class="course-meta"><span>CÔNG NGHỆ</span><span>24 bài học</span></div><h4>Lập trình web cơ bản</h4><div class="progress-line"><span style="width:28%;background:#36a4df"></span></div><div class="progress-label"><span>Đã hoàn thành</span><strong>28%</strong></div></div></article>
+    </section>
+    <section class="bottom-grid">
+      <div class="activity"><h3>Hoạt động gần đây</h3>
+        <div class="activity-row"><div class="activity-ico">▶️</div><div><strong>Hoàn thành bài học mới</strong><small>Tiếng Anh giao tiếp · Bài 8</small></div><time>10 phút trước</time></div>
+        <div class="activity-row"><div class="activity-ico">🏅</div><div><strong>Đạt thành tích “Chăm chỉ”</strong><small>Học liên tục 7 ngày</small></div><time>Hôm qua</time></div>
+        <div class="activity-row"><div class="activity-ico">📝</div><div><strong>Hoàn thành bài kiểm tra</strong><small>Thiết kế UI/UX · 9/10 điểm</small></div><time>2 ngày trước</time></div>
+      </div>
+      <div class="activity"><h3>Thời gian học trong tuần</h3><div class="eyebrow">Mục tiêu: 10 giờ / tuần</div>
+        <div class="week"><div class="day"><div class="bar" style="height:38%"></div>T2</div><div class="day"><div class="bar" style="height:65%"></div>T3</div><div class="day"><div class="bar" style="height:45%"></div>T4</div><div class="day"><div class="bar" style="height:82%"></div>T5</div><div class="day"><div class="bar" style="height:55%"></div>T6</div><div class="day"><div class="bar today" style="height:95%"></div>T7</div><div class="day"><div class="bar" style="height:22%"></div>CN</div></div>
+      </div>
+    </section>
+  </main>
+</div>
+<div class="toast" id="toast" role="status"></div>
+<script>
+  const toast=document.getElementById('toast');let timer;
+  function notify(message){toast.textContent=message;toast.classList.add('show');clearTimeout(timer);timer=setTimeout(()=>toast.classList.remove('show'),2600)}
+  document.querySelectorAll('.nav-item').forEach(btn=>btn.addEventListener('click',()=>{
+    document.querySelectorAll('.nav-item').forEach(b=>b.classList.remove('active'));btn.classList.add('active');
+    const view=btn.dataset.view;document.getElementById('pageTitle').textContent=view==='Tổng quan'?'Chào buổi sáng! 👋':view;
+    if(view!=='Tổng quan')notify('Bạn đang xem mục “'+view+'” — bản demo giao diện.');
+  }));
+  document.getElementById('continueBtn').addEventListener('click',()=>notify('Đang mở khóa học: Tiếng Anh giao tiếp.'));
+  document.getElementById('goalBtn').addEventListener('click',()=>notify('Mục tiêu hôm nay: học ít nhất 20 phút.'));
+  document.getElementById('reportBtn').addEventListener('click',()=>notify('Báo cáo học tập tuần này đã sẵn sàng trong bản demo.'));
+  document.getElementById('allCourses').addEventListener('click',()=>{document.getElementById('search').focus();notify('Nhập tên khóa học để lọc danh sách.');});
+  document.getElementById('search').addEventListener('input',e=>{
+    const q=e.target.value.toLocaleLowerCase('vi');
+    document.querySelectorAll('.course').forEach(card=>card.style.display=card.dataset.name.toLocaleLowerCase('vi').includes(q)?'':'none');
+  });
+</script>
+</body>
+</html>
